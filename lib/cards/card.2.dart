@@ -19,6 +19,11 @@ class Card2 extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(10),
           ),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 5,
+            ),
+          ],
         ),
         child: Column(
           children: const [
