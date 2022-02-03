@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Card1 extends StatelessWidget {
@@ -17,7 +16,6 @@ class Card1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        //TODO: Add a stack of text
         padding: const EdgeInsets.all(20),
         constraints: const BoxConstraints.expand(
           width: 350,
@@ -31,6 +29,37 @@ class Card1 extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(10),
           ),
+        ),
+        child: Stack(
+          children: [
+            Text(
+              category,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            Positioned(
+              top: 20,
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.headline2,
+              ),
+            ),
+            Positioned(
+              bottom: 30,
+              right: 0,
+              child: Text(
+                description,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ),
+            Positioned(
+              bottom: 10,
+              right: 0,
+              child: Text(
+                chef,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ),
+          ],
         ),
       ),
     );
