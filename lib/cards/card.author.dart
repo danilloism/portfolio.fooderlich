@@ -22,7 +22,7 @@ class AuthorCard extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          //TODO: add alignment
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CircleImage(
               imageProvider: imageProvider,
