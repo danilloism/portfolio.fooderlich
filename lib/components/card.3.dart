@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:fooderlich/models/models.dart';
 import 'package:fooderlich/theme.dart';
 import 'package:fooderlich/utils.dart';
 
 class Card3 extends StatelessWidget {
-  const Card3({Key? key}) : super(key: key);
+  const Card3({
+    Key? key,
+    required this.recipe,
+  }) : super(key: key);
+
+  final ExploreRecipe recipe;
+
+  List<Widget> createTagChips() {
+    final chips = <Widget>[];
+    recipe.tags.take(6).forEach((element) {
+      final chip = Chip(
+        label: Text(
+          element,
+          style: FooderlichTheme.dark.textTheme.bodyText1,
+        ),
+        backgroundColor: Colors.black.withOpacity(0.7),
+      );
+      chips.add(chip);
+    });
+
+    return chips;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +35,15 @@ class Card3 extends StatelessWidget {
           width: 350,
           height: 450,
         ),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/magazine_pics/mag3.png'),
+            image: AssetImage(recipe.backgroundImage),
             fit: BoxFit.cover,
           ),
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(10),
           ),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(blurRadius: 5),
           ],
         ),
@@ -47,7 +69,7 @@ class Card3 extends StatelessWidget {
                   ),
                   Gap.gapH8,
                   Text(
-                    "Recipe Trends",
+                    recipe.title,
                     style: FooderlichTheme.dark.textTheme.headline2,
                   ),
                   Gap.gapH32,
@@ -58,54 +80,9 @@ class Card3 extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Wrap(
-                  alignment: WrapAlignment.start,
-                  spacing: 12,
-                  //runSpacing: 12,
-                  children: [
-                    Chip(
-                      label: Text('Healthy',
-                          style: FooderlichTheme.dark.textTheme.bodyText1),
-                      backgroundColor: Colors.black.withOpacity(0.7),
-                      onDeleted: () {},
-                    ),
-                    Chip(
-                      label: Text('Vegan',
-                          style: FooderlichTheme.dark.textTheme.bodyText1),
-                      backgroundColor: Colors.black.withOpacity(0.7),
-                      onDeleted: () {},
-                    ),
-                    Chip(
-                      label: Text('Carrots',
-                          style: FooderlichTheme.dark.textTheme.bodyText1),
-                      backgroundColor: Colors.black.withOpacity(0.7),
-                    ),
-                    Chip(
-                      label: Text('Greens',
-                          style: FooderlichTheme.dark.textTheme.bodyText1),
-                      backgroundColor: Colors.black.withOpacity(0.7),
-                    ),
-                    Chip(
-                      label: Text('Wheat',
-                          style: FooderlichTheme.dark.textTheme.bodyText1),
-                      backgroundColor: Colors.black.withOpacity(0.7),
-                    ),
-                    Chip(
-                      label: Text('Pescetarian',
-                          style: FooderlichTheme.dark.textTheme.bodyText1),
-                      backgroundColor: Colors.black.withOpacity(0.7),
-                    ),
-                    Chip(
-                      label: Text('Mint',
-                          style: FooderlichTheme.dark.textTheme.bodyText1),
-                      backgroundColor: Colors.black.withOpacity(0.7),
-                    ),
-                    Chip(
-                      label: Text('Lemongrass',
-                          style: FooderlichTheme.dark.textTheme.bodyText1),
-                      backgroundColor: Colors.black.withOpacity(0.7),
-                    ),
-                  ],
-                ),
+                    alignment: WrapAlignment.start,
+                    spacing: 12,
+                    children: createTagChips()),
               ),
             ),
           ],

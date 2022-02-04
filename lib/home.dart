@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/components/card.1.dart';
-import 'package:fooderlich/components/card.2.dart';
-import 'package:fooderlich/components/card.3.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,10 +9,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
-  static final pages = <Widget>[
-    const Card1(),
-    const Card2(),
-    const Card3(),
+
+  static List<Widget> pages = <Widget>[
+    // TODO: Replace with ExploreScreen
+    Container(color: Colors.white),
+    // TODO: Replace with RecipesScreen
+    Container(color: Colors.green),
+    Container(color: Colors.blue),
   ];
 
   void _onItemTapped(int index) => setState(() {
@@ -26,9 +26,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const Text(
-          "Fooderlich",
+          'Fooderlich',
         ),
       ),
       body: pages[_selectedIndex],
@@ -38,16 +37,16 @@ class _HomeState extends State<Home> {
         onDestinationSelected: _onItemTapped,
         destinations: const [
           NavigationDestination(
-            icon: Icon(Icons.card_giftcard),
-            label: "Card",
+            icon: Icon(Icons.explore),
+            label: "Explore",
           ),
           NavigationDestination(
-            icon: Icon(Icons.card_giftcard),
-            label: "Card2",
+            icon: Icon(Icons.book),
+            label: "Recipes",
           ),
           NavigationDestination(
-            icon: Icon(Icons.card_giftcard),
-            label: "Card3",
+            icon: Icon(Icons.list),
+            label: "To Buy",
           ),
         ],
       ),
