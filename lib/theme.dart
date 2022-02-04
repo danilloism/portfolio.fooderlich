@@ -29,8 +29,6 @@ class FooderlichTheme {
       color: Colors.black,
     ),
   );
-
-  // 2
   static final _darkTextTheme = TextTheme(
     bodyText1: GoogleFonts.openSans(
       fontSize: 14.0,
@@ -61,44 +59,37 @@ class FooderlichTheme {
 
   static ThemeData get light {
     return ThemeData(
+      useMaterial3: true,
       brightness: Brightness.light,
-      checkboxTheme: CheckboxThemeData(
-        fillColor: MaterialStateColor.resolveWith(
-          (states) {
-            return Colors.black;
-          },
-        ),
-      ),
-      appBarTheme: const AppBarTheme(
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
-      ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.black,
-      ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.green,
-      ),
+      colorSchemeSeed: Colors.purpleAccent,
       textTheme: _lightTextTheme,
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: Colors.purpleAccent.withOpacity(0.3),
+      ),
+      appBarTheme: AppBarTheme(
+        backgroundColor: Colors.purpleAccent.withOpacity(0.8),
+        centerTitle: true,
+        elevation: 0,
+        //color: Colors.transparent,
+      ),
     );
   }
 
   static ThemeData get dark {
     return ThemeData(
+      useMaterial3: true,
+      colorSchemeSeed: Colors.deepPurpleAccent,
       brightness: Brightness.dark,
-      appBarTheme: AppBarTheme(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.grey[900],
-      ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.green,
-      ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.green,
-      ),
       textTheme: _darkTextTheme,
+      navigationBarTheme: const NavigationBarThemeData(
+        backgroundColor: Colors.transparent,
+      ),
+      appBarTheme: AppBarTheme(
+        backgroundColor: Colors.black.withOpacity(0.1),
+        centerTitle: true,
+        elevation: 0,
+        //color: Colors.transparent,
+      ),
     );
   }
 }

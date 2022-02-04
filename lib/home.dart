@@ -32,20 +32,20 @@ class _HomeState extends State<Home> {
         ),
       ),
       body: pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(
+      bottomNavigationBar: NavigationBar(
+        //selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: _onItemTapped,
+        destinations: const [
+          NavigationDestination(
             icon: Icon(Icons.card_giftcard),
             label: "Card",
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.card_giftcard),
             label: "Card2",
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.card_giftcard),
             label: "Card3",
           ),
