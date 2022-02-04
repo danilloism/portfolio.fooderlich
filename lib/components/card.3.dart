@@ -15,7 +15,7 @@ class Card3 extends StatelessWidget {
         ),
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/mag2.png'),
+            image: AssetImage('assets/magazine_pics/mag3.png'),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.all(
@@ -60,7 +60,7 @@ class Card3 extends StatelessWidget {
                 child: Wrap(
                   alignment: WrapAlignment.start,
                   spacing: 12,
-                  runSpacing: 12,
+                  //runSpacing: 12,
                   children: [
                     Chip(
                       label: Text('Healthy',

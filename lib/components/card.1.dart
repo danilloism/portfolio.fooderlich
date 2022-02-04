@@ -23,7 +23,7 @@ class Card1 extends StatelessWidget {
         ),
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/mag1.png'),
+            image: AssetImage('assets/magazine_pics/mag1.png'),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.all(

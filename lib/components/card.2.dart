@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/cards/card.author.dart';
+import 'package:fooderlich/components/card.author.dart';
 import 'package:fooderlich/theme.dart';
 
 class Card2 extends StatelessWidget {
@@ -15,7 +15,7 @@ class Card2 extends StatelessWidget {
         ),
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/mag5.png'),
+            image: AssetImage('assets/magazine_pics/mag2.png'),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.all(
@@ -32,7 +32,8 @@ class Card2 extends StatelessWidget {
             const AuthorCard(
               authorName: 'Danillo Ilggner',
               title: 'Computer Science Student',
-              imageProvider: AssetImage('assets/danillo.jpeg'),
+              imageProvider:
+                  AssetImage('assets/profile_pics/person_danillo.jpeg'),
             ),
             Expanded(
               child: Stack(
