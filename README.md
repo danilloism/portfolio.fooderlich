@@ -1,7 +1,7 @@
 # Fooderlich
 
-App created while studying chapter 3 of Flutter Apprentice.
+App in the making while studying the book Flutter Apprentice (2nd Edition). 
 
 ## What it does?
 
-The app is simply a layout to introduce the common widgets in Flutter. It is the project of the chapter 3 of Flutter Apprentice (2nd Edition).
+The app is supposed to be a social network about recipes.
