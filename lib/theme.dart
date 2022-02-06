@@ -61,16 +61,15 @@ class FooderlichTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      colorSchemeSeed: Colors.purpleAccent,
+      colorSchemeSeed: Colors.white,
       textTheme: _lightTextTheme,
-      navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: Colors.purpleAccent.withOpacity(0.3),
-      ),
+      // navigationBarTheme: NavigationBarThemeData(
+      //   backgroundColor: Colors.purpleAccent.withOpacity(0.3),
+      // ),
       appBarTheme: AppBarTheme(
-        backgroundColor: Colors.purpleAccent.withOpacity(0.8),
+        backgroundColor: Colors.white,
         centerTitle: true,
-        elevation: 0,
-        //color: Colors.transparent,
+        titleTextStyle: _lightTextTheme.headline2,
       ),
     );
   }
@@ -78,17 +77,15 @@ class FooderlichTheme {
   static ThemeData get dark {
     return ThemeData(
       useMaterial3: true,
-      colorSchemeSeed: Colors.deepPurpleAccent,
+      colorSchemeSeed: Colors.black,
       brightness: Brightness.dark,
       textTheme: _darkTextTheme,
       navigationBarTheme: const NavigationBarThemeData(
         backgroundColor: Colors.transparent,
       ),
-      appBarTheme: AppBarTheme(
-        backgroundColor: Colors.black.withOpacity(0.1),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.black,
         centerTitle: true,
-        elevation: 0,
-        //color: Colors.transparent,
       ),
     );
   }

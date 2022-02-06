@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/api/mock_fooderlich_service.dart';
+import 'package:fooderlich/components/components.dart';
 import 'package:fooderlich/models/models.dart';
+import 'package:fooderlich/utils.dart';
 
 class ExplorePage extends StatelessWidget {
   const ExplorePage({Key? key}) : super(key: key);
@@ -12,14 +14,18 @@ class ExplorePage extends StatelessWidget {
     return FutureBuilder(
       future: _mockService.getExploreData(),
       builder: (context, AsyncSnapshot<ExploreData> snapshot) {
-        //TODO: add Nested List Views
         if (snapshot.connectionState == ConnectionState.done) {
-          final recipes = snapshot.data?.todayRecipes ?? [];
-          //TODO: replace this with TodayRecipeListView
-          return const Center(
-            child: SizedBox(
-              child: Text("Alo alo alo!"),
-            ),
+          return ListView(
+            scrollDirection: Axis.vertical,
+            children: [
+              TodayRecipeListView(recipes: snapshot.data?.todayRecipes ?? []),
+              Gap.gapH16,
+              //TODO: replace this with FriendPostListView
+              Container(
+                height: 400,
+                color: Colors.green,
+              ),
+            ],
           );
         } else {
           return const Center(

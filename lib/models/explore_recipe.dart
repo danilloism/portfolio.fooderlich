@@ -44,39 +44,43 @@ class ExploreRecipe {
     this.tags = const [],
     this.description = '',
     this.source = '',
-    this.ingredients = const <Ingredients>[],
-    this.instructions = const <Instruction>[],
+    this.ingredients = const [],
+    this.instructions = const [],
   });
 
   factory ExploreRecipe.fromJson(Map<String, dynamic> json) {
     final ingredients = <Ingredients>[];
     final instructions = <Instruction>[];
 
-    json['ingredients'].forEach((v) {
-      ingredients.add(Ingredients.fromJson(v));
-    });
+    if (json['ingredients'] != null) {
+      json['ingredients'].forEach((v) {
+        ingredients.add(Ingredients.fromJson(v));
+      });
+    }
 
-    json['instructions'].forEach((v) {
-      instructions.add(Instruction.fromJson(v));
-    });
+    if (json['instructions'] != null) {
+      json['instructions'].forEach((v) {
+        instructions.add(Instruction.fromJson(v));
+      });
+    }
 
     return ExploreRecipe(
-      id: json['id'] as String,
-      cardType: json['cardType'] as String,
-      title: json['title'] as String,
-      subtitle: json['subtitle'] as String,
-      backgroundImage: json['backgroundImage'] as String,
-      backgroundImageSource: json['backgroundImageSource'] as String,
-      message: json['message'] as String,
-      authorName: json['authorName'] as String,
-      role: json['role'] as String,
-      profileImage: json['profileImage'] as String,
-      durationInMinutes: json['durationInMinutes'] as int,
-      dietType: json['dietType'] as String,
-      calories: json['calories'] as int,
-      tags: json['tags'].cast<String>() as List<String>,
-      description: json['description'] as String,
-      source: json['source'] as String,
+      id: json['id'] ?? '',
+      cardType: json['cardType'] ?? '',
+      title: json['title'] ?? '',
+      subtitle: json['subtitle'] ?? '',
+      backgroundImage: json['backgroundImage'] ?? '',
+      backgroundImageSource: json['backgroundImageSource'] ?? '',
+      message: json['message'] ?? '',
+      authorName: json['authorName'] ?? '',
+      role: json['role'] ?? '',
+      profileImage: json['profileImage'] ?? '',
+      durationInMinutes: json['durationInMinutes'] ?? 0,
+      dietType: json['dietType'] ?? '',
+      calories: json['calories'] ?? 0,
+      tags: json['tags'].cast<String>() ?? [],
+      description: json['description'] ?? '',
+      source: json['source'] ?? '',
       ingredients: ingredients,
       instructions: instructions,
     );
