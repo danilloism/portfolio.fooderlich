@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
     Container(color: Colors.blue),
   ];
 
-  void _onItemTapped(int index) => setState(() {
+  void _onItemAnyEvent(int index) => setState(() {
         _selectedIndex = index;
       });
 
@@ -32,14 +32,14 @@ class _HomeState extends State<Home> {
       // ),
       body: PageView(
         controller: controller,
-        onPageChanged: _onItemTapped,
+        onPageChanged: _onItemAnyEvent,
         children: pages,
       ),
 
       bottomNavigationBar: NavigationBar(
         //selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         selectedIndex: _selectedIndex,
-        onDestinationSelected: _onItemTapped,
+        onDestinationSelected: _onItemAnyEvent,
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.explore),
