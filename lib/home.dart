@@ -25,11 +25,11 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Fooderlich',
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: const Text(
+      //     'Fooderlich',
+      //   ),
+      // ),
       body: pages[_selectedIndex],
       bottomNavigationBar: NavigationBar(
         //selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,

@@ -69,7 +69,7 @@ class FooderlichTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.white,
         centerTitle: true,
-        titleTextStyle: _lightTextTheme.headline2,
+        titleTextStyle: _lightTextTheme.headline3,
       ),
     );
   }
