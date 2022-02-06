@@ -19,12 +19,8 @@ class ExplorePage extends StatelessWidget {
             scrollDirection: Axis.vertical,
             children: [
               TodayRecipeListView(recipes: snapshot.data?.todayRecipes ?? []),
-              Gap.gapH16,
-              //TODO: replace this with FriendPostListView
-              Container(
-                height: 400,
-                color: Colors.green,
-              ),
+              Gap.h16,
+              FriendPostListView(friendPosts: snapshot.data?.friendPosts ?? []),
             ],
           );
         } else {

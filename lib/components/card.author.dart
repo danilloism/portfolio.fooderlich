@@ -35,7 +35,7 @@ class _AuthorCardState extends State<AuthorCard> {
                 imageProvider: widget.imageProvider,
                 imageRadius: 28,
               ),
-              Gap.gapW8,
+              Gap.w8,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -53,7 +53,7 @@ class _AuthorCardState extends State<AuthorCard> {
           ),
           IconButton(
             icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border,
-                color: Colors.red[400]),
+                color: _isFavorited ? Colors.red[400] : Colors.green),
             iconSize: 30,
             alignment: Alignment.center,
             constraints: const BoxConstraints(

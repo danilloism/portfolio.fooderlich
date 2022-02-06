@@ -27,7 +27,7 @@ class TodayRecipeListView extends StatelessWidget {
               "Recipes of the day",
               style: Theme.of(context).textTheme.headline1,
             ),
-            Gap.gapH16,
+            Gap.h16,
             SizedBox(
               height: 400,
               child: ListView.separated(
@@ -36,7 +36,7 @@ class TodayRecipeListView extends StatelessWidget {
                     final recipe = recipes[index];
                     return _buildCard(recipe);
                   },
-                  separatorBuilder: (context, index) => Gap.gapW16,
+                  separatorBuilder: (context, index) => Gap.w16,
                   itemCount: recipes.length),
             ),
           ],
