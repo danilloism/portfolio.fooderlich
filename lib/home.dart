@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
-  final PageController controller = PageController();
+  final PageController _pageController = PageController();
 
   static final List<Widget> pages = <Widget>[
     const ExplorePage(),
@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
     Container(color: Colors.blue),
   ];
 
-  void _onItemAnyEvent(int index) => setState(() {
+  void _onItemChanged(int index) => setState(() {
         _selectedIndex = index;
       });
 
@@ -31,15 +31,17 @@ class _HomeState extends State<Home> {
       //   ),
       // ),
       body: PageView(
-        controller: controller,
-        onPageChanged: _onItemAnyEvent,
+        controller: _pageController,
+        onPageChanged: _onItemChanged,
         children: pages,
       ),
 
       bottomNavigationBar: NavigationBar(
         //selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         selectedIndex: _selectedIndex,
-        onDestinationSelected: _onItemAnyEvent,
+        onDestinationSelected: (index) {
+          _pageController.jumpToPage(index);
+        },
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.explore),
