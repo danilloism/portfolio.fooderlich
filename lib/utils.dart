@@ -20,6 +20,17 @@ class Gap {
   static const h64 = SizedBox(height: 64);
 }
 
+class PaddingEdgeInsets {
+  static const all8 = EdgeInsets.all(8);
+  static const all16 = EdgeInsets.all(16);
+  static const all24 = EdgeInsets.all(24);
+  static const all32 = EdgeInsets.all(32);
+  static const all40 = EdgeInsets.all(40);
+  static const all48 = EdgeInsets.all(48);
+  static const all56 = EdgeInsets.all(56);
+  static const all64 = EdgeInsets.all(64);
+}
+
 extension StringUtils on String {
   String get capitalized =>
       "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
