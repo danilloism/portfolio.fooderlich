@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
-  final PageController controller = PageController();
+  final PageController _pageController = PageController();
 
   static final List<Widget> pages = <Widget>[
     const ExplorePage(),
@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
       //   ),
       // ),
       body: PageView(
-        controller: controller,
+        controller: _pageController,
         onPageChanged: _onItemAnyEvent,
         children: pages,
       ),
