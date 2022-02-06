@@ -10,6 +10,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
+  final PageController controller = PageController();
 
   static List<Widget> pages = <Widget>[
     const ExplorePage(),
@@ -29,7 +30,12 @@ class _HomeState extends State<Home> {
       //     'Fooderlich',
       //   ),
       // ),
-      body: pages[_selectedIndex],
+      body: PageView(
+        controller: controller,
+        onPageChanged: _onItemTapped,
+        children: pages,
+      ),
+
       bottomNavigationBar: NavigationBar(
         //selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         selectedIndex: _selectedIndex,
