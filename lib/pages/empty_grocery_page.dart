@@ -21,8 +21,25 @@ class EmptyGroceryScreen extends StatelessWidget {
             'No Groceries',
             style: TextStyle(fontSize: 21),
           ),
-          //TOTO: add empty screen subtitle
-          //TOTO: add browse recipes button
+          Gap.h16,
+          const Text(
+            'Shopping for ingredients?\n'
+            'Tap the + button to write them down!',
+            textAlign: TextAlign.center,
+          ),
+          Gap.h8,
+          MaterialButton(
+            textColor: Colors.white,
+            child: const Text('Browse Recipes'),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+            color: Colors.green,
+            onPressed: () => Provider.of<TabManager>(
+              context,
+              listen: false,
+            ).goToRecipes(),
+          ),
         ],
       ),
     );
