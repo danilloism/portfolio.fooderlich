@@ -10,8 +10,25 @@ class GroceryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: add a Scaffold widget
-    return const EmptyGroceryScreen();
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {}, //TODO: Present GroceryItemScreen
+      ),
+      body: _buildGroceryScreen(),
+    );
   }
-  //TODO: add buildGroceryScreen
+
+  Widget _buildGroceryScreen() {
+    return Consumer<GroceryManager>(
+      builder: (context, manager, child) {
+        if (manager.groceryItems.isNotEmpty) {
+          //TODO: add GroceryListScreen
+          return Container(color: Colors.pink);
+        } else {
+          return const _EmptyGroceryScreen();
+        }
+      },
+    );
+  }
 }

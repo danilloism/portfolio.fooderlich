@@ -1,7 +1,7 @@
 part of 'grocery_page.dart';
 
-class EmptyGroceryScreen extends StatelessWidget {
-  const EmptyGroceryScreen({Key? key}) : super(key: key);
+class _EmptyGroceryScreen extends StatelessWidget {
+  const _EmptyGroceryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
