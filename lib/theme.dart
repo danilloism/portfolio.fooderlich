@@ -61,7 +61,7 @@ class FooderlichTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      colorSchemeSeed: Colors.white,
+      colorSchemeSeed: Colors.grey,
       textTheme: _lightTextTheme,
       // navigationBarTheme: NavigationBarThemeData(
       //   backgroundColor: Colors.purpleAccent.withOpacity(0.3),
