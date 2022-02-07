@@ -64,6 +64,7 @@ flutter:
     - assets/magazine_pics/
     - assets/profile_pics/
     - assets/sample_data/
+    - assets/fooderlich_assets/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

@@ -12,10 +12,10 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
   final PageController _pageController = PageController();
 
-  static final List<Widget> pages = <Widget>[
+  static final pages = <Widget>[
     const ExplorePage(),
     const RecipesPage(),
-    Container(color: Colors.blue),
+    const GroceryPage(),
   ];
 
   void _onItemChanged(int index) => setState(() {
@@ -40,7 +40,11 @@ class _HomeState extends State<Home> {
         //selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         selectedIndex: _selectedIndex,
         onDestinationSelected: (index) {
-          _pageController.jumpToPage(index);
+          _pageController.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.ease,
+          );
         },
         destinations: const [
           NavigationDestination(
