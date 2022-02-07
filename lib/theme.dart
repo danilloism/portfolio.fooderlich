@@ -61,15 +61,18 @@ class FooderlichTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      colorSchemeSeed: Colors.grey,
+      colorSchemeSeed: Colors.lightGreen,
       textTheme: _lightTextTheme,
       // navigationBarTheme: NavigationBarThemeData(
       //   backgroundColor: Colors.purpleAccent.withOpacity(0.3),
       // ),
       appBarTheme: AppBarTheme(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.lightGreen.withOpacity(0.5),
         centerTitle: true,
+        elevation: 0,
         titleTextStyle: _lightTextTheme.headline3,
+        actionsIconTheme: const IconThemeData(color: Colors.green),
+        iconTheme: const IconThemeData(color: Colors.green),
       ),
     );
   }
