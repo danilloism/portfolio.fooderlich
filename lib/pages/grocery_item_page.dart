@@ -39,11 +39,11 @@ class GroceryItemPage extends StatefulWidget {
 
 class _GroceryItemPageState extends State<GroceryItemPage> {
   final _nameController = TextEditingController();
-  late String _name = '';
+  String _name = '';
   Importance _importance = Importance.low;
   DateTime _dueDate = DateTime.now();
   TimeOfDay _timeOfDay = TimeOfDay.now();
-  Color _currentColor = Colors.green;
+  Color _currentColor = Colors.lightGreen;
   int _currentSliderValue = 0;
 
   @override

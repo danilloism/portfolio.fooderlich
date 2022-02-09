@@ -17,6 +17,27 @@ class _HomeState extends State<Home> {
     const GroceryPage(),
   ];
 
+  final _pageController = PageController();
+
+  @override
+  void initState() {
+    setState(() {
+      _pageController.addListener(
+        () {
+          _pageController.page;
+        },
+      );
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) => Consumer<TabManager>(
         builder: (context, tabManager, child) => Scaffold(
@@ -26,11 +47,17 @@ class _HomeState extends State<Home> {
             ),
           ),
           //TODO:: replace body
-          body: pages[tabManager.selectedTab],
+          body: PageView(
+            controller: _pageController,
+            children: pages,
+            onPageChanged: (index) => tabManager.goToTab(index),
+          ),
           bottomNavigationBar: NavigationBar(
-            //selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
             selectedIndex: tabManager.selectedTab,
-            onDestinationSelected: (index) => tabManager.goToTab(index),
+            onDestinationSelected: (index) => _pageController.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.ease),
             destinations: const [
               NavigationDestination(
                 icon: Icon(Icons.explore),

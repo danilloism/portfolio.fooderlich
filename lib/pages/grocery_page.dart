@@ -23,7 +23,7 @@ class GroceryPage extends StatelessWidget {
               builder: (context) => GroceryItemPage.create(
                 onCreate: (item) {
                   manager.addItem(item);
-                  Navigator.pop(context);
+                  //Navigator.pop(context);
                 },
               ),
             ),

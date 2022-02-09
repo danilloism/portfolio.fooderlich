@@ -34,7 +34,7 @@ class _EmptyGroceryScreen extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
             ),
-            color: Colors.green,
+            color: Colors.lightGreen,
             onPressed: () => Provider.of<TabManager>(
               context,
               listen: false,

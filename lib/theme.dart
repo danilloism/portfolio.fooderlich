@@ -63,11 +63,13 @@ class FooderlichTheme {
       brightness: Brightness.light,
       colorSchemeSeed: Colors.lightGreen,
       textTheme: _lightTextTheme,
-      // navigationBarTheme: NavigationBarThemeData(
-      //   backgroundColor: Colors.purpleAccent.withOpacity(0.3),
-      // ),
+      navigationBarTheme: NavigationBarThemeData(
+        indicatorColor: Colors.lightGreen.withOpacity(0.5),
+        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+        backgroundColor: Colors.lightGreen.withOpacity(0.4),
+      ),
       appBarTheme: AppBarTheme(
-        backgroundColor: Colors.lightGreen.withOpacity(0.5),
+        backgroundColor: Colors.lightGreen.withOpacity(0.4),
         centerTitle: true,
         elevation: 0,
         titleTextStyle: _lightTextTheme.headline3,
