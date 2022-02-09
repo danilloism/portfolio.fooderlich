@@ -46,6 +46,7 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
   TimeOfDay _timeOfDay = TimeOfDay.now();
   Color _currentColor = Colors.lightGreen;
   int _currentSliderValue = 0;
+  bool _isComplete = false;
 
   @override
   void initState() {
@@ -58,6 +59,7 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
       _currentColor = originalItem.color;
       _dueDate = originalItem.date;
       _timeOfDay = TimeOfDay(hour: _dueDate.hour, minute: _dueDate.minute);
+      _isComplete = originalItem.isComplete;
     }
 
     _nameController.addListener(
@@ -96,7 +98,7 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
                   _dueDate.hour,
                   _dueDate.minute,
                 ),
-                //isComplete: isComplete,
+                isComplete: _isComplete,
               );
 
               if (widget.isUpdating) {
@@ -104,6 +106,8 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
               } else {
                 widget.onCreate!(groceryItem);
               }
+
+              Navigator.pop(context);
             },
             icon: const Icon(Icons.check),
             color: _currentColor,
@@ -138,6 +142,7 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
                   _timeOfDay.hour,
                   _timeOfDay.minute,
                 ),
+                isComplete: _isComplete,
                 //isComplete: false,
               ),
             ),

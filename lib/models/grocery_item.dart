@@ -14,7 +14,7 @@ class GroceryItem {
     required this.color,
     required this.quantity,
     required this.date,
-    //required this.isComplete,
+    this.isComplete = false,
   });
 
   final String id;
@@ -23,7 +23,7 @@ class GroceryItem {
   final Color color;
   final int quantity;
   final DateTime date;
-  final bool isComplete = true;
+  final bool isComplete;
 
   GroceryItem copyWith({
     String? id,
@@ -41,7 +41,7 @@ class GroceryItem {
       color: color ?? this.color,
       quantity: quantity ?? this.quantity,
       date: date ?? this.date,
-      //isComplete: isComplete ?? this.isComplete,
+      isComplete: isComplete ?? this.isComplete,
     );
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fooderlich/components/components.dart';
 import 'package:fooderlich/models/models.dart';
 import 'package:fooderlich/pages/grocery_item_page.dart';
 import 'package:fooderlich/utils.dart';
 import 'package:provider/provider.dart';
 
 part 'empty_grocery_page.dart';
+part 'grocery_list_page.dart';
 
 class GroceryPage extends StatelessWidget {
   const GroceryPage({Key? key}) : super(key: key);
@@ -38,8 +40,7 @@ class GroceryPage extends StatelessWidget {
     return Consumer<GroceryManager>(
       builder: (context, manager, child) {
         if (manager.groceryItems.isNotEmpty) {
-          //TODO: add GroceryListScreen
-          return Container(color: Colors.pink);
+          return GroceryListPage(manager: manager);
         } else {
           return const _EmptyGroceryScreen();
         }
