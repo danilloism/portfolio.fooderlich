@@ -5,6 +5,7 @@ import 'package:fooderlich/models/models.dart';
 import 'package:fooderlich/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 
 class GroceryItemPage extends StatefulWidget {
   const GroceryItemPage({
@@ -61,7 +62,7 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
 
     _nameController.addListener(
       () => setState(
-        () => _nameController.text,
+        () => _name = _nameController.text,
       ),
     );
     super.initState();
@@ -77,10 +78,35 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: _currentColor),
+        backgroundColor: _currentColor.withOpacity(0.5),
         actions: [
           IconButton(
-            onPressed: () {}, //TODO: add callback handler
+            onPressed: () {
+              final groceryItem = GroceryItem(
+                id: widget.originalItem?.id ?? const Uuid().v1(),
+                name: _nameController.text,
+                importance: _importance,
+                color: _currentColor,
+                quantity: _currentSliderValue,
+                date: DateTime(
+                  _dueDate.year,
+                  _dueDate.month,
+                  _dueDate.day,
+                  _dueDate.hour,
+                  _dueDate.minute,
+                ),
+                //isComplete: isComplete,
+              );
+
+              if (widget.isUpdating) {
+                widget.onUpdate!(groceryItem);
+              } else {
+                widget.onCreate!(groceryItem);
+              }
+            },
             icon: const Icon(Icons.check),
+            color: _currentColor,
           ),
         ],
         title: Text(
@@ -112,7 +138,7 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
                   _timeOfDay.hour,
                   _timeOfDay.minute,
                 ),
-                isComplete: false,
+                //isComplete: false,
               ),
             ),
           ],
@@ -167,7 +193,7 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
           spacing: 10,
           children: [
             ChoiceChip(
-              selectedColor: Colors.lightGreen.shade400,
+              selectedColor: _currentColor,
               selected: _importance == Importance.low,
               label: const Text(
                 'low',
@@ -178,7 +204,7 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
               ),
             ),
             ChoiceChip(
-              selectedColor: Colors.lightGreen.shade400,
+              selectedColor: _currentColor,
               selected: _importance == Importance.medium,
               label: const Text(
                 'medium',
@@ -189,7 +215,7 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
               ),
             ),
             ChoiceChip(
-              selectedColor: Colors.lightGreen.shade400,
+              selectedColor: _currentColor,
               selected: _importance == Importance.high,
               label: const Text(
                 'high',
@@ -234,7 +260,10 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
                   },
                 );
               },
-              child: const Text('Select'),
+              child: Text(
+                'Select',
+                style: TextStyle(color: _currentColor),
+              ),
             ),
           ],
         ),
@@ -270,7 +299,10 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
                   }
                 });
               },
-              child: const Text('Select'),
+              child: Text(
+                'Select',
+                style: TextStyle(color: _currentColor),
+              ),
             ),
           ],
         ),
@@ -299,7 +331,10 @@ class _GroceryItemPageState extends State<GroceryItemPage> {
           ],
         ),
         TextButton(
-          child: const Text('Select'),
+          child: Text(
+            'Select',
+            style: TextStyle(color: _currentColor),
+          ),
           onPressed: () => showDialog(
             context: context,
             builder: (context) => AlertDialog(
