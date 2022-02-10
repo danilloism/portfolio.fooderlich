@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fooderlich/models/models.dart';
 import 'package:fooderlich/pages/pages.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,52 +11,45 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _selectedIndex = 0;
-  final PageController _pageController = PageController();
-
-  static final List<Widget> pages = <Widget>[
+  static final pages = <Widget>[
     const ExplorePage(),
     const RecipesPage(),
-    Container(color: Colors.blue),
+    const GroceryPage(),
   ];
 
-  void _onItemAnyEvent(int index) => setState(() {
-        _selectedIndex = index;
-      });
+  //final _pageController = PageController();
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text(
-      //     'Fooderlich',
-      //   ),
-      // ),
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: _onItemAnyEvent,
-        children: pages,
-      ),
-
-      bottomNavigationBar: NavigationBar(
-        //selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: _onItemAnyEvent,
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.explore),
-            label: "Explore",
+  Widget build(BuildContext context) => Consumer<TabManager>(
+        builder: (context, tabManager, child) => Scaffold(
+          appBar: AppBar(
+            title: const Text(
+              'Fooderlich',
+            ),
           ),
-          NavigationDestination(
-            icon: Icon(Icons.book),
-            label: "Recipes",
+          //TODO:: replace body
+          body: IndexedStack(
+            index: tabManager.selectedTab,
+            children: pages,
           ),
-          NavigationDestination(
-            icon: Icon(Icons.list),
-            label: "To Buy",
+          bottomNavigationBar: NavigationBar(
+            selectedIndex: tabManager.selectedTab,
+            onDestinationSelected: (index) => tabManager.goToTab(index),
+            destinations: const [
+              NavigationDestination(
+                icon: Icon(Icons.explore),
+                label: "Explore",
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.book),
+                label: "Recipes",
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.list),
+                label: "To Buy",
+              ),
+            ],
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      );
 }
