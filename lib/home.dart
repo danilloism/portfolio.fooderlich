@@ -17,26 +17,7 @@ class _HomeState extends State<Home> {
     const GroceryPage(),
   ];
 
-  final _pageController = PageController();
-
-  @override
-  void initState() {
-    setState(() {
-      _pageController.addListener(
-        () {
-          _pageController.page;
-        },
-      );
-    });
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
+  //final _pageController = PageController();
 
   @override
   Widget build(BuildContext context) => Consumer<TabManager>(
@@ -47,17 +28,13 @@ class _HomeState extends State<Home> {
             ),
           ),
           //TODO:: replace body
-          body: PageView(
-            controller: _pageController,
+          body: IndexedStack(
+            index: tabManager.selectedTab,
             children: pages,
-            onPageChanged: (index) => tabManager.goToTab(index),
           ),
           bottomNavigationBar: NavigationBar(
             selectedIndex: tabManager.selectedTab,
-            onDestinationSelected: (index) => _pageController.animateToPage(
-                index,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.ease),
+            onDestinationSelected: (index) => tabManager.goToTab(index),
             destinations: const [
               NavigationDestination(
                 icon: Icon(Icons.explore),
