@@ -21,17 +21,18 @@ class GroceryItemScreen extends StatefulWidget {
   const GroceryItemScreen.create({
     Key? key,
     required this.onCreate,
-    this.index = -1, //TODO: Refactor index definition on create constructor
+    //TODO: Refactor index definition on create constructor
   })  : isUpdating = false,
         originalItem = null,
         onUpdate = null,
+        index = -1,
         super(key: key);
 
   const GroceryItemScreen.update({
     Key? key,
     required this.onUpdate,
     required this.originalItem,
-    required this.index, //TODO: Refactor this
+    required this.index,
   })  : isUpdating = true,
         onCreate = null,
         super(key: key);

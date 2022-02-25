@@ -80,7 +80,6 @@ class AppRouter extends RouterDelegate
     if (route.settings.name == FooderlichPages.raywenderlich) {
       profileManager.tapOnRaywenderlich(false);
     }
-    // TODO: Handle state when user closes WebView screen
 
     return true;
   }
