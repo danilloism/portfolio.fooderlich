@@ -18,6 +18,11 @@ class GroceryManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  void cancelItemCreation() {
+    _createNewItem = false;
+    notifyListeners();
+  }
+
   void deleteItem(int index) {
     _groceryItems.removeAt(index);
     notifyListeners();

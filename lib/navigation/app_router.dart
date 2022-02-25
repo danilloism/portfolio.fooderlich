@@ -41,8 +41,11 @@ class AppRouter extends RouterDelegate
           OnboardingScreen.page(),
         if (appStateManager.isOnBoardingComplete)
           Home.page(appStateManager.setlectedTab),
-        // TODO: Add Home
-        // TODO: Create new item
+        if (groceryManager.isCreatingNewItem)
+          GroceryItemScreen.page(
+            onCreate: (item) => groceryManager.addItem(item),
+            onUpdate: (item, index) {},
+          ),
         // TODO: Select GroceryItemScreen
         // TODO: Add Profile Screen
         // TODO: Add WebView Screen
@@ -61,6 +64,10 @@ class AppRouter extends RouterDelegate
     if (route.settings.name == FooderlichPages.onboardingPath) {
       appStateManager.logout();
     }
+
+    // if(groceryManager.isCreatingNewItem){
+
+    // }
     // TODO: Handle state when user closes grocery item screen
     // TODO: Handle state when user closes profile screen
     // TODO: Handle state when user closes WebView screen
@@ -69,5 +76,5 @@ class AppRouter extends RouterDelegate
   }
 
   @override
-  Future<void> setNewRoutePath(configuration) async => null;
+  Future<void> setNewRoutePath(configuration) async {}
 }
