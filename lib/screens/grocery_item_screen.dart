@@ -9,30 +9,6 @@ import '../models/models.dart';
 import '../utils.dart';
 
 class GroceryItemScreen extends StatefulWidget {
-  final Function(GroceryItem) onCreate;
-  final Function(GroceryItem, int) onUpdate;
-  final GroceryItem? originalItem;
-  final int index;
-  final bool isUpdating;
-
-  static MaterialPage page({
-    GroceryItem? item,
-    int index = -1,
-    required Function(GroceryItem) onCreate,
-    required Function(GroceryItem, int) onUpdate,
-  }) {
-    return MaterialPage(
-      name: FooderlichPages.groceryItemDetails,
-      key: ValueKey(FooderlichPages.groceryItemDetails),
-      child: GroceryItemScreen(
-        onCreate: onCreate,
-        onUpdate: onUpdate,
-        originalItem: item,
-        index: index,
-      ),
-    );
-  }
-
   const GroceryItemScreen({
     Key? key,
     required this.onCreate,
@@ -41,6 +17,82 @@ class GroceryItemScreen extends StatefulWidget {
     this.index = -1,
   })  : isUpdating = (originalItem != null),
         super(key: key);
+
+  const GroceryItemScreen.create({
+    Key? key,
+    required this.onCreate,
+    this.index = -1, //TODO: Refactor index definition on create constructor
+  })  : isUpdating = false,
+        originalItem = null,
+        onUpdate = null,
+        super(key: key);
+
+  const GroceryItemScreen.update({
+    Key? key,
+    required this.onUpdate,
+    required this.originalItem,
+    required this.index, //TODO: Refactor this
+  })  : isUpdating = true,
+        onCreate = null,
+        super(key: key);
+
+  final Function(GroceryItem)? onCreate;
+  final Function(GroceryItem, int)? onUpdate;
+  final GroceryItem? originalItem;
+  final int index;
+  final bool isUpdating;
+
+  static MaterialPage pageOnCreate({
+    required Function(GroceryItem) onCreate,
+  }) {
+    return MaterialPage(
+      name: FooderlichPages.groceryItemDetails,
+      key: ValueKey(FooderlichPages.groceryItemDetails),
+      child: GroceryItemScreen.create(onCreate: onCreate),
+    );
+  }
+
+  static MaterialPage pageOnUpdate({
+    required Function(GroceryItem, int) onUpdate,
+    required int index,
+    required GroceryItem item,
+  }) {
+    return MaterialPage(
+      name: FooderlichPages.groceryItemDetails,
+      key: ValueKey(FooderlichPages.groceryItemDetails),
+      child: GroceryItemScreen.update(
+        onUpdate: onUpdate,
+        originalItem: item,
+        index: index,
+      ),
+    );
+  }
+
+  // static MaterialPage page({
+  //   required bool isCreating,
+  //   int index = -1,
+  //   Function(GroceryItem)? onCreate,
+  //   Function(GroceryItem, int)? onUpdate,
+  //   GroceryItem? item,
+  // }) {
+  //   return MaterialPage(
+  //     name: FooderlichPages.groceryItemDetails,
+  //     key: ValueKey(FooderlichPages.groceryItemDetails),
+  //     // child: GroceryItemScreen(
+  //     //   onCreate: onCreate,
+  //     //   onUpdate: onUpdate,
+  //     //   originalItem: item,
+  //     //   index: index,
+  //     // ),
+  //     child: isCreating
+  //         ? GroceryItemScreen.create(onCreate: onCreate)
+  //         : GroceryItemScreen.update(
+  //             onUpdate: onUpdate,
+  //             originalItem: item,
+  //             index: index,
+  //           ),
+  //   );
+  // }
 
   @override
   _GroceryItemScreenState createState() => _GroceryItemScreenState();
@@ -64,7 +116,9 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
             icon: const Icon(Icons.check),
             onPressed: () {
               final groceryItem = GroceryItem(
-                id: widget.originalItem?.id ?? const Uuid().v1(),
+                id: widget.isUpdating
+                    ? widget.originalItem!.id
+                    : const Uuid().v1(),
                 name: _nameController.text,
                 importance: _importance,
                 color: _currentColor,
@@ -79,12 +133,12 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
               );
 
               if (widget.isUpdating) {
-                widget.onUpdate(
+                widget.onUpdate!(
                   groceryItem,
                   widget.index,
                 );
               } else {
-                widget.onCreate(groceryItem);
+                widget.onCreate!(groceryItem);
               }
             },
           )
