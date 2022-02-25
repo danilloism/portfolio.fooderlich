@@ -33,5 +33,5 @@ class PaddingEdgeInsets {
 
 extension StringUtils on String {
   String get capitalized =>
-      "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
+      '${this[0].toUpperCase()}${substring(1).toLowerCase()}';
 }

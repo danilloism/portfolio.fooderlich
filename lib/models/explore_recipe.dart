@@ -8,9 +8,9 @@ class RecipeCardType {
 }
 
 class ExploreRecipe {
-  final String id;
-  final String cardType;
-  final String title;
+  String id;
+  String cardType;
+  String title;
   String subtitle;
   String backgroundImage;
   String backgroundImageSource;

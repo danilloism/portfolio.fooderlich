@@ -1,9 +1,9 @@
 part of 'explore_recipe.dart';
 
 class Ingredients {
-  final String imageUrl;
-  final String title;
-  final String source;
+  String imageUrl;
+  String title;
+  String source;
 
   Ingredients({
     required this.imageUrl,
@@ -13,9 +13,9 @@ class Ingredients {
 
   factory Ingredients.fromJson(Map<String, dynamic> json) {
     return Ingredients(
-      imageUrl: json['imageUrl'],
-      title: json['title'],
-      source: json['source'],
+      imageUrl: json['imageUrl'] ?? '',
+      title: json['title'] ?? '',
+      source: json['source'] ?? '',
     );
   }
 }

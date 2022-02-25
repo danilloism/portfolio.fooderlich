@@ -1,10 +1,10 @@
 class SimpleRecipe {
-  final String id;
-  final String dishImage;
-  final String title;
-  final String duration;
-  final String source;
-  final List<String> information;
+  String id;
+  String dishImage;
+  String title;
+  String duration;
+  String source;
+  List<String> information;
 
   SimpleRecipe({
     required this.id,

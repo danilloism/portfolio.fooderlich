@@ -13,9 +13,9 @@ class Instruction {
 
   factory Instruction.fromJson(Map<String, dynamic> json) {
     return Instruction(
-      imageUrl: json['imageUrl'],
-      description: json['description'],
-      durationInMinutes: json['durationInMinutes'],
+      imageUrl: json['imageUrl'] ?? '',
+      description: json['description'] ?? '',
+      durationInMinutes: json['durationInMinutes'] ?? '',
     );
   }
 }

@@ -56,42 +56,41 @@ class FooderlichTheme {
       color: Colors.white,
     ),
   );
+  static final _light = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.light,
+    colorSchemeSeed: Colors.lightGreen,
+    textTheme: _lightTextTheme,
+    navigationBarTheme: NavigationBarThemeData(
+      indicatorColor: Colors.lightGreen.withOpacity(0.5),
+      labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+      backgroundColor: Colors.lightGreen.withOpacity(0.4),
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.lightGreen.withOpacity(0.4),
+      centerTitle: true,
+      elevation: 0,
+      titleTextStyle: _lightTextTheme.headline3,
+      actionsIconTheme: const IconThemeData(color: Colors.green),
+      iconTheme: const IconThemeData(color: Colors.green),
+    ),
+  );
+  static final _dark = ThemeData(
+    useMaterial3: true,
+    colorSchemeSeed: Colors.black,
+    brightness: Brightness.dark,
+    textTheme: _darkTextTheme,
+    navigationBarTheme: const NavigationBarThemeData(
+      backgroundColor: Colors.transparent,
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.black,
+      centerTitle: true,
+    ),
+  );
 
-  static ThemeData get light {
-    return ThemeData(
-      useMaterial3: true,
-      brightness: Brightness.light,
-      colorSchemeSeed: Colors.lightGreen,
-      textTheme: _lightTextTheme,
-      navigationBarTheme: NavigationBarThemeData(
-        indicatorColor: Colors.lightGreen.withOpacity(0.5),
-        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-        backgroundColor: Colors.lightGreen.withOpacity(0.4),
-      ),
-      appBarTheme: AppBarTheme(
-        backgroundColor: Colors.lightGreen.withOpacity(0.4),
-        centerTitle: true,
-        elevation: 0,
-        titleTextStyle: _lightTextTheme.headline3,
-        actionsIconTheme: const IconThemeData(color: Colors.green),
-        iconTheme: const IconThemeData(color: Colors.green),
-      ),
-    );
-  }
-
-  static ThemeData get dark {
-    return ThemeData(
-      useMaterial3: true,
-      colorSchemeSeed: Colors.black,
-      brightness: Brightness.dark,
-      textTheme: _darkTextTheme,
-      navigationBarTheme: const NavigationBarThemeData(
-        backgroundColor: Colors.transparent,
-      ),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.black,
-        centerTitle: true,
-      ),
-    );
-  }
+  static ThemeData get light => _light;
+  static ThemeData get dark => _dark;
+  static TextTheme get lightTextTheme => _lightTextTheme;
+  static TextTheme get darkTextTheme => _darkTextTheme;
 }
