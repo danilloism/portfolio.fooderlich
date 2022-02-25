@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../components/components.dart';
 import '../models/models.dart';
+import '../utils.dart';
 
 class FriendPostTile extends StatelessWidget {
   final Post post;
@@ -21,7 +22,7 @@ class FriendPostTile extends StatelessWidget {
           imageProvider: AssetImage(post.profileImageUrl),
           imageRadius: 20,
         ),
-        const SizedBox(width: 16),
+        Gap.w16,
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

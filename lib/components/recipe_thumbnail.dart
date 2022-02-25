@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/models.dart';
+import '../utils.dart';
 
 class RecipeThumbnail extends StatelessWidget {
   final SimpleRecipe recipe;
@@ -26,7 +27,7 @@ class RecipeThumbnail extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          const SizedBox(height: 10),
+          Gap.h8,
           Text(
             recipe.title,
             maxLines: 1,

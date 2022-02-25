@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme.dart';
+import '../utils.dart';
 import 'circle_image.dart';
 
 class AuthorCard extends StatefulWidget {
@@ -34,7 +35,7 @@ class _AuthorCardState extends State<AuthorCard> {
               imageProvider: widget.imageProvider,
               imageRadius: 28,
             ),
-            const SizedBox(width: 8),
+            Gap.w8,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
