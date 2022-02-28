@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'navigation/app_route_parser.dart';
 import 'theme.dart';
 import 'models/models.dart';
 import 'navigation/app_router.dart';
@@ -17,16 +18,17 @@ class _FooderlichState extends State<Fooderlich> {
   final _groceryManager = GroceryManager();
   final _profileManager = ProfileManager();
   final _appStateManager = AppStateManager();
-  late final AppRouter _appRouter;
+  late AppRouter _appRouter;
+  final routeParser = AppRouteParser();
 
   @override
   void initState() {
+    super.initState();
     _appRouter = AppRouter(
       appStateManager: _appStateManager,
       groceryManager: _groceryManager,
       profileManager: _profileManager,
     );
-    super.initState();
   }
 
   @override
@@ -52,14 +54,13 @@ class _FooderlichState extends State<Fooderlich> {
             theme = FooderlichTheme.light;
           }
 
-          return MaterialApp(
+          return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             theme: theme,
             title: 'Fooderlich',
-            home: Router(
-              routerDelegate: _appRouter,
-              backButtonDispatcher: RootBackButtonDispatcher(),
-            ),
+            routeInformationParser: routeParser,
+            routerDelegate: _appRouter,
+            backButtonDispatcher: RootBackButtonDispatcher(),
           );
         },
       ),
