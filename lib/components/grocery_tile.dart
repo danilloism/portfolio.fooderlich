@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 import '../models/grocery_item.dart';
+import '../utils.dart';
 
 class GroceryTile extends StatelessWidget {
   final GroceryItem item;
@@ -30,7 +31,7 @@ class GroceryTile extends StatelessWidget {
                 width: 5.0,
                 color: item.color,
               ),
-              const SizedBox(width: 16.0),
+              Gap.w16,
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,9 +44,9 @@ class GroceryTile extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 4.0),
+                  Gap.h8,
                   buildDate(),
-                  const SizedBox(height: 4.0),
+                  Gap.h8,
                   buildImportance(),
                 ],
               ),

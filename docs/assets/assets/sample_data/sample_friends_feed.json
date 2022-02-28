@@ -69,13 +69,6 @@
             "comment": "Hmmm.... Salmon, little broccoli, mash potatos",
             "foodPictureUrl": "card_carrot.png",
             "timestamp": "90"
-        },
-        {
-            "id": "11",
-            "profileImageUrl": "assets/profile_pics/person_danillo.jpeg",
-            "comment": "Uiuiuiuiuiui it's me",
-            "foodPictureUrl": "card_carrot.png",
-            "timestamp": "90"
         }
     ]
 }

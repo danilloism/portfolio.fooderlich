@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme.dart';
 import '../models/models.dart';
+import '../utils.dart';
 
 class Card3 extends StatelessWidget {
   final ExploreRecipe recipe;
@@ -66,12 +67,12 @@ class Card3 extends StatelessWidget {
                     color: Colors.white,
                     size: 40,
                   ),
-                  const SizedBox(height: 8),
+                  Gap.h8,
                   Text(
                     recipe.title,
                     style: FooderlichTheme.darkTextTheme.headline2,
                   ),
-                  const SizedBox(height: 30),
+                  Gap.h32,
                 ],
               ),
             ),
